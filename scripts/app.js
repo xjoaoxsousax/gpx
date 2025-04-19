@@ -121,7 +121,7 @@ function createRouteCard(route, pattern) {
         <div class="route-number">${route.short_name}</div>
       </div>
       <div class="route-body">
-        <div class="route-name">${pattern.headsign}</div>
+        <div class="route-name"><strong>Destino:</strong> ${pattern.headsign}</div>
         <div class="route-actions">
           <button class="btn btn-primary" onclick="previewRoute('${pattern.shape_id}', '${route.short_name} - ${pattern.headsign}')">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="none" d="M0 0h24v24H0z"/><path d="M18.364 17.364L12 23.728l-6.364-6.364a9 9 0 1 1 12.728 0zM12 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="currentColor"/></svg>
