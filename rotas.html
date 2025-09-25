@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <script>
-    if (document.referrer === '' || document.referrer.indexOf('index.html') === -1) {
-        window.location.href = 'index.html';
-    }
+<script>
+  // Verifica se a página foi acessada após um login bem-sucedido
+  if (document.referrer === '' || document.referrer.indexOf('index.html') === -1) {
+      window.location.href = 'index.html';
+  }
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
