@@ -1,1 +1,20 @@
+# .github/workflows/login-check.yml
+name: Login Check
 
+on:
+  repository_dispatch:
+    types: [check_login]
+
+jobs:
+  check_credentials:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check credentials
+        run: |
+          if [ "${{ github.event.client_payload.username }}" == "joao" ] && [ "${{ github.event.client_payload.password }}" == "1437" ]; then
+            echo "Login success"
+            exit 0
+          else
+            echo "Login failed"
+            exit 1
+          fi
