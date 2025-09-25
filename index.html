@@ -138,56 +138,32 @@
             <p class="message" id="errorMessage">Usuário ou senha incorretos. Tente novamente.</p>
             <button type="submit" class="login-button">Entrar</button>
         </form>
+        <footer style="text-align: center; font-size: 0.8rem; color: var(--text-secondary); padding: 1rem 0px; border-top: 1px solid var(--border-color); margin-top: 2rem;">
+      <p>© 2025 - Ferramenta criada por  joao.sousa.martins@icloud.com</p>
+    </footer>
     </div>
 
     <script>
-    document.getElementById('loginForm').addEventListener('submit', async function(event) {
-        event.preventDefault();
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
 
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        const targetPage = 'rotas.html';
-        const errorMessage = document.getElementById('errorMessage');
-        const loginButton = document.getElementById('loginButton');
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
 
-        loginButton.disabled = true;
-        errorMessage.style.display = 'none';
+            // Define o usuário e a senha corretos
+            const correctUsername = 'joao';
+            const correctPassword = '1437';
+            const targetPage = 'rotas.html'; // Mude para o nome do seu arquivo de rotas
 
-        try {
-            // URL da sua API do GitHub Actions
-            const githubApiUrl = 'https://api.github.com/repos/xjoaoxsousax/gpx/dispatches';
-
-            const response = await fetch(githubApiUrl, {
-                method: 'POST',
-                headers: {
-                    // Seu Token de Acesso Pessoal
-                    'Authorization': 'Bearer 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',
-                    'Accept': 'application/vnd.github.v3+json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    event_type: 'check_login',
-                    client_payload: {
-                        username: username,
-                        password: password
-                    }
-                })
-            });
-
-            if (response.ok) {
-                // Se a API retornar sucesso, significa que a senha está correta
+            if (username === correctUsername && password === correctPassword) {
+                // Credenciais corretas: redireciona para a página de rotas
                 window.location.href = targetPage;
             } else {
-                // Se a API retornar erro, a senha está errada
+                // Credenciais incorretas: mostra a mensagem de erro
                 errorMessage.style.display = 'block';
             }
-        } catch (error) {
-            console.error('Login failed:', error);
-            errorMessage.style.display = 'block';
-        } finally {
-            loginButton.disabled = false;
-        }
-    });
-</script>
+        });
+    </script>
 </body>
 </html>
